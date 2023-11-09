@@ -8,7 +8,9 @@ For questions 1 and 4, please include a PDF with your answers.
 
 Please also include a submission.py that can run your code for questions 2 and 3.
 
-Question 1: Our Mars rover has been out collecting samples, and it 
+<hr>
+
+**Question 1:** Our Mars rover has been out collecting samples, and it 
 needs to return to the charging station as quickly as possible. 
 
 It knows that over rocky terrain it can go 2 km/h. Over sandy terrain it can go 3 km/h,
@@ -41,7 +43,9 @@ willing to wait for this information from the satellite?
 
 **(5 points)** Now put this problem into ChatGPT. Is it able to solve it correctly? If not, where does it make mistakes?
 
-Part 2: Hidden Markov Models 
+<hr>
+
+**Question 2:** Hidden Markov Models 
 
 (Note: this is derived from an assignment in AAAI's Model Assignments workshop)
 
@@ -103,7 +107,9 @@ You might find it helpful to use a numpy array to hold the matrix.
 
 You can compare your results to ambiguous_sents.tagged.obs.
 
-Problem 3: Belief networks. 
+<hr>
+
+**Question 3:** Belief networks. 
 
 For this problem, you'll be using the [pgmpy](https://pgmpy.org/) library for probabilistic inference. To begin, you'll want to install this.
 
@@ -141,9 +147,10 @@ P(starts | !gas, ignition, !keyPresent) = 0.01
 P(starts | gas, !ignition, !keyPresent) = 0.01 
 P(starts | !gas, !ignition, !keyPresent) = 0.01
 </pre>
-  
 
-**(Problem 4 - grad students only)**
+<hr>
+
+**(Question 4 - grad students only)**
 
 [AINow](https://ainowinstitute.org/) is a research institute that produces policy analysis addressing the concentration of power in the tech industry.
 They have recently published a landscape report assessing the state of the AI industry and making policy rcommendations.
