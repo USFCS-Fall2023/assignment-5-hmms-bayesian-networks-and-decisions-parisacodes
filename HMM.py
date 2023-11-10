@@ -2,7 +2,6 @@ import random
 import argparse
 import codecs
 import os
-import numpy as np
 
 
 # observations
@@ -167,23 +166,20 @@ class HMM:
         states = list(T.keys())
         num_obs = len(obs_seq)
 
-        # Small smoothing constant for Laplace smoothing
-        smoothing_constant = 1e-10
-
         # Initialize the Viterbi path and probabilities
         viterbi = {state: [0] * len(obs_seq) for state in T if state != "#"}
         path_tracker = {state: [0] * len(obs_seq) for state in T if state != "#"}
 
         # Initialize the probabilities for the initial state
         for state in T["#"]:
-            viterbi[state][0] = np.log(float(T["#"][state]) + smoothing_constant) + np.log(float(E[state].get(obs_seq[0], smoothing_constant)))
+            viterbi[state][0] = float(T["#"][state]) * float(E[state].get(obs_seq[0], 0))
 
         # Viterbi algorithm
         for t in range(1, num_obs):
             for next_state in viterbi:
-                prob_path_tracker = [(viterbi[current_state][t - 1] + np.log(
-                    float(T[current_state].get(next_state, smoothing_constant))) + np.log(
-                    float(E[next_state].get(obs_seq[t], smoothing_constant))),
+                prob_path_tracker = [(viterbi[current_state][t - 1] *
+                                      float(T[current_state].get(next_state, 0)) *
+                                      float(E[next_state].get(obs_seq[t], 0)),
                                       current_state) for current_state in viterbi]
                 max_prob, previous_state = max(prob_path_tracker, key=lambda x: x[0])
                 viterbi[next_state][t] = max_prob
